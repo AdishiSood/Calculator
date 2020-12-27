@@ -1,0 +1,226 @@
+package Calculator;
+import javax.swing.*;
+import java.awt.Color;
+import java.awt.event.*; 
+//1st step  of Using ActionListner
+public class Calculator implements ActionListener //It has only one method: actionPerformed()
+{
+	JFrame f;
+	JTextField t;
+	JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,bm,bdot,bd,ba,bs,beq,bac,bc;
+	static double a=0,b=0,result=0;
+	static int op=0;
+	
+ Calculator()
+ {
+	 
+			 f=new JFrame("Calculator"); //creating instance of JFrame  
+			 t=new JTextField();//creating instance of JTextField
+			//creating instance of JButton
+			     b1=new JButton("1");  
+			     b2=new JButton("2");  
+			     b3=new JButton("3");  
+			     b4=new JButton("4");  
+			     b5=new JButton("5");  
+			     b6=new JButton("6");  
+			     b7=new JButton("7");  
+			     b8=new JButton("8");  
+			     b9=new JButton("9");  
+			     b0=new JButton("0");  
+			     bm=new JButton("*");  
+			     bd=new JButton("/");  
+			     ba=new JButton("+");  
+			     bdot=new JButton("."); 
+			     bs=new JButton("-");  
+			     beq=new JButton("=");  
+			     bc=new JButton("C");
+			     bac=new JButton("A/C");  
+			     
+			  t.setBackground(Color.BLACK);
+			  t.setForeground(Color.WHITE);
+			  bac.setForeground(Color.RED);
+			  ba.setForeground(Color.RED);
+			  bd.setForeground(Color.RED);
+			  bc.setForeground(Color.RED);
+			  bm.setForeground(Color.RED);
+			  bs.setForeground(Color.RED);
+			  beq.setForeground(Color.RED);
+			        t.setBounds(80,50,290,30); //x axis, y axis, width, height  
+					b7.setBounds(80,100,50,40);
+					b8.setBounds(160,100,50,40);
+					b9.setBounds(240,100,50,40);
+					bd.setBounds(320,100,50,40);
+					
+					b4.setBounds(80,170,50,40);
+					b5.setBounds(160,170,50,40);
+					b6.setBounds(240,170,50,40);
+					bm.setBounds(320,170,50,40);
+					
+					b1.setBounds(80,240,50,40);
+					b2.setBounds(160,240,50,40);
+					b3.setBounds(240,240,50,40);
+					bs.setBounds(320,240,50,40);
+					
+					bdot.setBounds(80,310,50,40);
+					b0.setBounds(160,310,50,40);
+					beq.setBounds(240,310,50,40);
+					ba.setBounds(320,310,50,40);
+					
+					bc.setBounds(110,380,100,40);
+					bac.setBounds(250,380,100,40); 
+					
+					//adding buttons in JFrame 
+					f.add(t);
+					f.add(b7);
+					f.add(b8);
+					f.add(b9);
+					f.add(bd);
+					f.add(b4);
+					f.add(b5);
+					f.add(b6);
+					f.add(bm);
+					f.add(b1);
+					f.add(b2);
+					f.add(b3);
+					f.add(bs);
+					f.add(bdot);
+					f.add(b0);
+					f.add(beq);
+					f.add(ba);
+					f.add(bc);
+					f.add(bac);
+					
+					f.setLayout(null);//using no layout managers 
+					f.setVisible(true);//making the frame visible  
+					f.setSize(500,500);//600 width and 600 height  
+					f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					f.setResizable(false);
+			//2nd step  of Using ActionListner	
+					b1.addActionListener(this);
+					b2.addActionListener(this);
+					b3.addActionListener(this);
+					b4.addActionListener(this);
+					b5.addActionListener(this);
+					b6.addActionListener(this);
+					b7.addActionListener(this);
+					b8.addActionListener(this);
+					b9.addActionListener(this);
+					b0.addActionListener(this);
+					ba.addActionListener(this);
+					bd.addActionListener(this);
+					bm.addActionListener(this);
+					bs.addActionListener(this);
+					bdot.addActionListener(this);
+					beq.addActionListener(this);
+					bc.addActionListener(this);
+					bac.addActionListener(this);
+				}
+ //The actionPerformed() method is invoked automatically whenever you click on the registered component.
+ public void actionPerformed(ActionEvent e)//3rd step  of Using ActionListner
+	{
+		if(e.getSource()==b1)//The getSource( ) method returns the source of the event.
+			t.setText(t.getText().concat("1"));
+		
+		if(e.getSource()==b2)
+			t.setText(t.getText().concat("2"));
+		
+		if(e.getSource()==b3)
+			t.setText(t.getText().concat("3"));
+		
+		if(e.getSource()==b4)
+			t.setText(t.getText().concat("4"));
+		
+		if(e.getSource()==b5)
+			t.setText(t.getText().concat("5"));
+		
+		if(e.getSource()==b6)
+			t.setText(t.getText().concat("6"));
+		
+		if(e.getSource()==b7)
+			t.setText(t.getText().concat("7"));
+		
+		if(e.getSource()==b8)
+			t.setText(t.getText().concat("8"));
+		
+		if(e.getSource()==b9)
+			t.setText(t.getText().concat("9"));
+		
+		if(e.getSource()==b0)
+			t.setText(t.getText().concat("0"));
+		
+		if(e.getSource()==bdot)
+			t.setText(t.getText().concat("."));
+		
+		if(e.getSource()==ba)
+		{
+		a=Double.parseDouble(t.getText());
+			//a=Integer.parseInt(t.getText());
+			op=1;// Operator 1
+			t.setText("");
+		} 
+		
+		if(e.getSource()==bs)
+		{
+			a=Double.parseDouble(t.getText());
+			//a=Integer.parseInt(t.getText());
+			op=2;// Operator 2
+			t.setText("");
+		}
+		
+		if(e.getSource()==bm)
+		{
+			a=Double.parseDouble(t.getText());
+		//	a=Integer.parseInt(t.getText());
+			op=3; // Operator 3
+			t.setText("");
+		}
+		
+		if(e.getSource()==bd)
+		{
+			a=Double.parseDouble(t.getText());
+		//	a=Integer.parseInt(t.getText());
+			op=4;// Operator 4
+			t.setText("");
+		}
+		
+		if(e.getSource()==beq)
+		{
+			b=Double.parseDouble(t.getText());
+					
+			switch(op)
+			{
+				case 1: result=a+b;
+					break;
+		
+				case 2: result=a-b;
+					break;
+		
+				case 3: result=a*b;
+					break;
+		
+				case 4: result=a/b;
+					break;
+		
+				default: result=0;
+			}
+		
+			t.setText(""+result);
+		}
+		
+		if(e.getSource()==bac)
+			t.setText("");
+		
+		if(e.getSource()==bc)
+		{
+			String s=t.getText();
+			t.setText("");
+			for(int i=0;i<s.length()-1;i++)
+			t.setText(t.getText()+s.charAt(i));
+		}		
+	}
+
+	public static void main(String args[])
+	{
+		new Calculator();
+	}
+}
